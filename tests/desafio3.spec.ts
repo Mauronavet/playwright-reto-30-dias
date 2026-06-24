@@ -17,7 +17,7 @@ test('Check left menu options', async ({ page }) => {
 
   for (let i = 0; i < currentMenuItemsCount; i++) {
 
-    const menuText = await leftMenuItems.nth(i).innerText()
+  const menuText = await leftMenuItems.nth(i).innerText()
   currentMenuItems.push(menuText)
   }
 
