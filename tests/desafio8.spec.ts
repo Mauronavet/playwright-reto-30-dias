@@ -10,6 +10,10 @@ await loginPage.doLogin("Admin", "admin123")
 const sidePanel = new SidePanel(page)
 await sidePanel.clickOnOption(SideMenuOption.ADMIN)
 
-await expect(page.getByText('Invalid credentials')).toBeVisible()
+await sidePanel.searchMenu(SideMenuOption.BUZZ)
+
+const leftMenuItem = page.getByLabel('Sidepanel').getByRole('listitem')
+
+await expect(leftMenuItem).toHaveText([SideMenuOption.BUZZ])
 
 })
