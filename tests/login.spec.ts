@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 import {LoginPage} from "../pageobjects/loginPage"
-import { SideMenuOption, SidePanel } from '../components/SidePanel'
+import { SideMenuOption, SidePanel } from '../components/top-bar-menu/SidePanel'
 
 test('Login to hrm', async ({ page }) => {
 
