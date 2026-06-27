@@ -5,13 +5,10 @@ import { SideMenuOption, SidePanel } from '../components/SidePanel'
 test('Login to hrm', async ({ page }) => {
 
 const loginPage = new LoginPage(page)
-await loginPage.loginAsAdmin()
+await loginPage.loginAsEmployee()
 
 const sidePanel = new SidePanel(page)
-await sidePanel.clickOnOption(SideMenuOption.ADMIN)
+await expect (sidePanel.menuOption(SideMenuOption.ADMIN)).toBeHidden();
 
-await expect (sidePanel.menuOption(SideMenuOption.ADMIN)).toBeVisible()
-
-//await expect(page.getByText('Invalid credentials')).toBeVisible()
 
 })

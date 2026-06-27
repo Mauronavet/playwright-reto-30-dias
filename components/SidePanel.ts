@@ -1,4 +1,4 @@
-import { Locator, Page } from '@playwright/test'
+import {expect, Locator, Page } from '@playwright/test'
 
 export enum SideMenuOption {
     ADMIN = 'Admin',
@@ -27,7 +27,7 @@ export class SidePanel {
         this.searchBttn = page.getByRole('textbox', { name: 'Search' })
     }
 
-        private menuOption(option: SideMenuOption):Locator{
+        public menuOption(option: SideMenuOption):Locator{
         return this.page.getByRole('link', {name: option})
     }
 
@@ -37,6 +37,11 @@ export class SidePanel {
 
     async searchMenu(option: SideMenuOption){
         await this.searchBttn.fill(option)
+    }
+
+    async verifyMenuOptionIsHidden(option: SideMenuOption) {
+     
+        await expect(this.menuOption(option)).toBeHidden();
     }
    
 }

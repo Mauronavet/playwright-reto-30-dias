@@ -1,4 +1,5 @@
 import { Locator, Page } from '@playwright/test'
+import { Environment } from '../config/Environment'
 
 export class LoginPage {
 
@@ -19,10 +20,17 @@ export class LoginPage {
     async doLogin(username:string,password:string){
 
   await this.page.goto('/web/index.php/auth/login')
-  await this.usernameInput.fill('Admin')
-  await this.passwordInput.fill('admin123')
+  await this.usernameInput.fill(username)
+  await this.passwordInput.fill(password)
   await this.loginBttn.click()
 
 
+    }
+    async loginAsAdmin(){
+        await this.doLogin(Environment.ADMIN_USERNAME, Environment.ADMIN_PASSWORD)
+    }
+
+     async loginAsEmployee(){
+        await this.doLogin(Environment.EMPLOYEE_USERNAME, Environment.EMPLOYEE_PASSWORD)
     }
 }
